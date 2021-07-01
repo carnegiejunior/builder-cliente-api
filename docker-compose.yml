@@ -1,0 +1,27 @@
+version: "3.3"
+
+networks: 
+  cliente-network:
+    driver: bridge
+
+services:
+  cliente-mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    networks:
+      - cliente-network
+
+  algafood-api:
+    image: carnegiejunior/cliente-api
+    command: ["/wait-for-it.sh","algafood-mysql:3306","-t", "30","--","java","-jar","api.jar"]
+    environment: 
+      DB_HOST: cliente-mysql
+    ports: 
+      - "8080:8080"
+    networks: 
+      - "cliente-network"
+    depends_on: 
+      - "cliente-mysql"
