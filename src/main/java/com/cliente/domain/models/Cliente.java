@@ -19,6 +19,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.cliente.api.models.mixins.ClienteRepresentationModel;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -76,6 +78,10 @@ public class Cliente {
 				Period.between(dataNascimento, LocalDate.now()).getDays()
 				);
 		
+	}
+	
+	public ClienteRepresentationModel toModel() {
+		return new ClienteRepresentationModel(this.id,this.nome,this.idade);
 	}
 
 }

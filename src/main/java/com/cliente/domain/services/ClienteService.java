@@ -5,9 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cliente.api.models.pagination.PageModel;
+import com.cliente.api.models.pagination.PageRequestModel;
 import com.cliente.domain.exceptions.ClienteNaoEncontradoException;
 import com.cliente.domain.exceptions.EntidadeEmUsoException;
 import com.cliente.domain.models.Cliente;
@@ -29,8 +34,15 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 
-	public List<Cliente> listar() {
+	public List<Cliente> listarTodos() {
 		return this.clienteRepository.findAll();
+	}
+	
+	public PageModel<Cliente> listAllOnLazyMode(PageRequestModel pageRequestModel) {
+		Pageable pageable = PageRequest.of(pageRequestModel.getPage(), pageRequestModel.getSize());
+		Page<Cliente> page = this.clienteRepository.findAll(pageable);
+		PageModel<Cliente> pageModel = new PageModel<>((int) page.getTotalElements(),page.getSize(),page.getTotalPages(),page.getContent());
+		return pageModel;
 	}
 	
 	public Cliente buscarOuFalhar(Long clienteId) {
@@ -38,6 +50,10 @@ public class ClienteService {
 			.orElseThrow(() -> new ClienteNaoEncontradoException(clienteId));
 	}	
 
+//	public ClienteRepresentationModel buscarOuFalharModel(Long clienteId) {
+//		return this.clienteRepository.findById(clienteId)
+//			.orElseThrow(() -> new ClienteNaoEncontradoException(clienteId));
+//	}	
 	
 	
 	@Transactional
