@@ -1,5 +1,7 @@
 package com.cliente.api.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -34,7 +36,7 @@ public class ClienteController {
 	@GetMapping
 	public ResponseEntity<PageModel<Cliente>> listarTodos(
 		
-			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "5") int size
 			
 			) 
@@ -53,6 +55,28 @@ public class ClienteController {
 	@GetMapping("/{clienteId}")
 	public Cliente buscarPorId(@PathVariable Long clienteId) {
 		return this.clienteService.buscarOuFalhar(clienteId);
+	}
+	
+	@GetMapping("/{cpf}/cpf")
+	public ResponseEntity<?> buscarPorCPF(@PathVariable String cpf) {
+		
+		List<Cliente> clientes = this.clienteService.buscarPorCPF(cpf);
+		if (clientes.size() > 0 ) {
+			return ResponseEntity.ok(clientes) ;
+		}else {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}
+	}
+	
+	@GetMapping("/{nome}/nome")
+	public ResponseEntity<?> buscarPorNome(@PathVariable String nome) {
+		
+		List<Cliente> clientes = this.clienteService.buscarPorNome(nome);
+		if (clientes.size() > 0 ) {
+			return ResponseEntity.ok(clientes) ;
+		}else {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}
 	}
 
 	@PostMapping

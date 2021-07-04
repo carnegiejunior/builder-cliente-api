@@ -22,6 +22,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	
 	public Page<Cliente> findAllById(Long id, Pageable pageable);
 	
+	public List<Cliente> findByCpf(String cpf);
+	
+	public List<Cliente> findByNomeContainingIgnoreCase(String nome);
+	
 	@Transactional(readOnly = false)
 	@Modifying
 	@Query("UPDATE clientes SET nome = ?2 WHERE id = ?1")

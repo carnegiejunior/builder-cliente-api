@@ -1,5 +1,7 @@
 package com.cliente.domain.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -48,6 +50,13 @@ public class ClienteService {
 	}	
 	
 
+	public List<Cliente> buscarPorCPF(String cpf){
+		return this.clienteRepository.findByCpf(cpf);
+	}
+	
+	public List<Cliente> buscarPorNome(String nome){
+		return this.clienteRepository.findByNomeContainingIgnoreCase(nome);
+	}
 
 	@Transactional
 	public void excluir(Long clienteId) {

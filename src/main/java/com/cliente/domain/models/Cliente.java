@@ -19,7 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.cliente.api.models.mixins.ClienteRepresentationModel;
+import com.cliente.api.models.ClienteRepresentationModel;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

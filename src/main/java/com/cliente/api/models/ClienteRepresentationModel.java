@@ -1,4 +1,4 @@
-package com.cliente.api.models.mixins;
+package com.cliente.api.models;
 
 import lombok.Getter;
 import lombok.Setter;
