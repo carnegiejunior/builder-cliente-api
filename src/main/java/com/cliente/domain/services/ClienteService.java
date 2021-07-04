@@ -1,7 +1,5 @@
 package com.cliente.domain.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -34,13 +32,12 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 
-	public List<Cliente> listarTodos() {
-		return this.clienteRepository.findAll();
-	}
-	
+
 	public PageModel<Cliente> listAllOnLazyMode(PageRequestModel pageRequestModel) {
 		Pageable pageable = PageRequest.of(pageRequestModel.getPage(), pageRequestModel.getSize());
+		
 		Page<Cliente> page = this.clienteRepository.findAll(pageable);
+		
 		PageModel<Cliente> pageModel = new PageModel<>((int) page.getTotalElements(),page.getSize(),page.getTotalPages(),page.getContent());
 		return pageModel;
 	}
@@ -49,13 +46,9 @@ public class ClienteService {
 		return this.clienteRepository.findById(clienteId)
 			.orElseThrow(() -> new ClienteNaoEncontradoException(clienteId));
 	}	
+	
 
-//	public ClienteRepresentationModel buscarOuFalharModel(Long clienteId) {
-//		return this.clienteRepository.findById(clienteId)
-//			.orElseThrow(() -> new ClienteNaoEncontradoException(clienteId));
-//	}	
-	
-	
+
 	@Transactional
 	public void excluir(Long clienteId) {
 		try {
@@ -68,5 +61,12 @@ public class ClienteService {
 			throw new EntidadeEmUsoException(
 				String.format(MSG_CLIENTE_EM_USO, clienteId));
 		}
-	}	
-}
+	}
+
+
+	public int clienteUpdateNome(Cliente cliente) {
+		return this.clienteRepository.updateClienteNome(cliente.getId(), cliente.getNome());
+	}
+
+
+	}

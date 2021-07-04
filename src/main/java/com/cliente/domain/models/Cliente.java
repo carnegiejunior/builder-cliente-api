@@ -36,7 +36,8 @@ public class Cliente {
 	private Long id;
 
 	@NotBlank(message = "O nome do cliente deve ser preenchido")
-	@Column(name = "STR_CLIENTE_NOME", nullable = false)
+	@Column(name = "STR_CLIENTE_NOME", nullable = false, length = 50)
+//	@Max(value = 50, message = "Nome do cliente deve conter no máximo 50 caracteres")
 	private String nome;
 
 	@NotNull
@@ -60,14 +61,8 @@ public class Cliente {
 	@Column(name = "DT_CLIENTE_DATA_ATUALIZACAO", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime dataAtualizacao;	
 
-	@NotNull
-	@Column(name = "BOL_CLIENTE_ATIVO", nullable = false)
-	private Boolean ativo = Boolean.TRUE;
-	
 	@Transient
 	private String idade;
-	
-	
 	
 	@PostPersist
 	@PostLoad
