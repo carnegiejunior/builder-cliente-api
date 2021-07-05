@@ -1,4 +1,6 @@
-<img src="readme_resources/client-cliente.jpg"/>
+<p align="center">
+  <img src="readme_resources/client-cliente.jpg" width="350" title="hover text">
+</p>
 
 <h1 align="center">API - CLIENTE</h1>
 
