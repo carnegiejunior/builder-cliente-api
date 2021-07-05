@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/Version-1.0-brightgreen"/>
 
-<p align="center">Escrever uma breve descrição</p>
+<p align="center">Trabalho apresentado à builders</p>
 
 <img src="https://www.iconspng.com/images/client-cliente/client-cliente.jpg"/>
 		  
