@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="readme_resources/client-cliente.jpg" width="350" title="hover text">
+  <img src="readme_resources/client-cliente.jpg" width="150" title="API - Clientes">
 </p>
 
 <h1 align="center">API - CLIENTE</h1>
