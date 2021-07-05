@@ -14,9 +14,9 @@ services:
     networks:
       - cliente-network
 
-  algafood-api:
+  cliente-api:
     image: carnegiejunior/cliente-api
-    command: ["/wait-for-it.sh","algafood-mysql:3306","-t", "30","--","java","-jar","api.jar"]
+    command: ["/wait-for-it.sh","cliente-mysql:3306","-t", "30","--","java","-jar","api.jar"]
     environment: 
       DB_HOST: cliente-mysql
     ports: 
