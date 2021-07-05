@@ -12,3 +12,15 @@
     <a href="https://pt-br.reactjs.org/">React</a>
 </h1>
 <p align="center">lib para construir interfaces do usuário com componentes reutilizáveis</p>
+
+### Requisitos:
+
+- [x] Permita criação de novos clientes;
+
+- [x] Permita a atualização de clientes existentes;
+
+- [x] Permita que seja possível listar os clientes de forma paginada;
+
+- [x] Permita que buscas por atributos cadastrais do cliente;
+
+- [x] É necessário também que cada elemento retornado pela api de clientes informe a idade;
