@@ -1,10 +1,12 @@
+<img src="readme_resources/client-cliente.jpg"/>
+
 <h1 align="center">API - CLIENTE</h1>
 
 <img src="https://img.shields.io/badge/Version-1.0-brightgreen"/>
 
 <p align="center">Trabalho apresentado à builders</p>
 
-<img src="https://www.iconspng.com/images/client-cliente/client-cliente.jpg"/>
+
 		  
 
 
